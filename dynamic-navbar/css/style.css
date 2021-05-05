@@ -1,0 +1,350 @@
+/* Yasin Ertune - Dinamik MenüBar Tasarımı */
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  background: #e2e8f1;
+}
+
+.wrapper {
+  /*Navbarın Tamamını Kaplayan Div*/
+  background: #ffffff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0.1px 0.1px 5px #1f3852;
+}
+
+.wrapper nav {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  max-width: calc(100% - 200px);
+  margin: 0 auto;
+  height: 70px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .content2 {
+  /*Logo ve Kategori Divi*/
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content2 .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 180px;
+}
+
+.content2 .logo img {
+  height: 70px;
+  width: 100px;
+}
+
+nav .content2 .links {
+  /*Kategoriler Linki*/
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content2 .links li {
+  /*Kategorinin Yazı Divi*/
+  list-style: none;
+  line-height: 70px;
+
+}
+
+.content2 .links li a,
+.content2 .links li label {
+  color: #1a202c;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 17px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content2 .links li label {
+  display: none;
+}
+
+.content2 .links li a:hover,
+.content2 .links li label:hover {
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color: #518acb;
+}
+
+.wrapper .search-icon,
+.wrapper .menu-icon {
+  color: #1a202c;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 70px;
+  width: 70px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.wrapper .menu-icon {
+  display: none;
+}
+
+.wrapper #show-search:checked~.search-icon i::before {
+  content: "\f00d";
+}
+
+.wrapper .search-box {
+  position: absolute;
+  height: 100%;
+  max-width: calc(100% - 50px);
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.wrapper #show-search:checked~.search-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-weight: bold;
+  outline: none;
+  font-size: 18px;
+  color: #1a202c;
+  background: #ffffff;
+  padding: 0 100px 0 15px;
+}
+
+.search-box input::placeholder {
+  color: #1a202c;
+}
+
+.search-box .go-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 60px;
+  width: 70px;
+  background: #ffffff;
+  border: none;
+  outline: none;
+  color: #1a202c;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.content2 .links ul {
+  position: absolute;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 5px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  top: 80px;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  margin-left: 15px;
+}
+
+.content2 .links li:hover>ul {
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+.content2 .links ul li a {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1a202c;
+  display: block;
+  width: 100%;
+  line-height: 5px;
+}
+
+.content2 .links ul ul {
+  position: absolute;
+  top: 0;
+  right: calc(-100% + 8px);
+}
+
+.content2 .links ul li {
+  padding: 10px;
+  width: 100%;
+  position: relative;
+  left: -30px;
+}
+
+.content2 .links ul li:hover ul {
+  top: 0;
+}
+
+
+
+/*Media Query - Responsive Tasarım*/
+@media screen and (max-width: 1400px) {
+  .wrapper nav {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  nav .content2 .links {
+    margin-left: 30px;
+    margin: auto;
+  }
+
+  .content2 .links li a {
+    padding: 8px 13px;
+  }
+
+  .wrapper .search-box {
+    max-width: calc(100% - 100px);
+  }
+
+  .wrapper .search-box input {
+    padding: 0 100px 0 15px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .wrapper .menu-icon {
+    display: block;
+  }
+
+  .wrapper #show-menu:checked~.menu-icon i::before {
+    content: "\f00d";
+  }
+
+  nav .content2 .links {
+    display: block;
+    position: fixed;
+    background: #ffffff;
+    height: 100%;
+    width: 100%;
+    top: 70px;
+    left: -100%;
+    margin-left: 0;
+    max-width: 400px;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    transition: all 0.3s ease;
+  }
+
+  nav #show-menu:checked~.content2 .links {
+    left: 0%;
+  }
+
+  .content2 .links li {
+    margin: 15px 20px;
+  }
+
+  .content2 .links li a,
+  .content2 .links li label {
+    line-height: 40px;
+    font-size: 20px;
+    display: block;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+
+  .content2 .links li a.desktop-link {
+    display: none;
+  }
+
+  nav .content2 .links {
+    display: block;
+    position: fixed;
+    background: #ffffff;
+    height: 100%;
+    width: 100%;
+    top: 70px;
+    left: -100%;
+    margin-left: 0;
+    max-width: 400px;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    transition: all 0.3s ease;
+  }
+
+  nav #show-menu:checked~.content2 .links {
+    left: 0%;
+  }
+
+  .content2 .links li {
+    margin: 15px 20px;
+  }
+
+  .content2 .links li a,
+  .content2 .links li label {
+    line-height: 40px;
+    font-size: 20px;
+    display: block;
+    padding: 8px 18px;
+    cursor: pointer;
+  }
+
+  .content2 .links li a.desktop-link {
+    display: none;
+  }
+
+
+  .content2 .links ul,
+  .content2 .links ul ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    max-height: 0px;
+    overflow: hidden;
+  }
+
+  /*Eğer Ana Başlıklar 9 taneden fazlaysa #show-features10 .... ekleyiniz. Her ana başlık için açılır menü görevini üstleniyor.*/
+  .content2 .links #show-features1:checked~ul,
+  .content2 .links #show-features2:checked~ul,
+  .content2 .links #show-features3:checked~ul {
+    max-height: 100vh;
+  }
+
+  .content2 .links #show-features4:checked~ul,
+  .content2 .links #show-features5:checked~ul,
+  .content2 .links #show-features6:checked~ul {
+    max-height: 100vh;
+  }
+
+  .content2 .links #show-features7:checked~ul,
+  .content2 .links #show-features8:checked~ul,
+  .content2 .links #show-features9:checked~ul {
+    max-height: 100vh;
+  }
+
+  .content2 .links ul li {
+    margin: 7px 20px;
+  }
+
+  .content2 .links ul li a {
+    font-size: 18px;
+    line-height: 30px;
+    border-radius: 5px !important;
+  }
+}
