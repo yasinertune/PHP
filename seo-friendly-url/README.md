@@ -1,4 +1,4 @@
-# Seo Dostu URL yapımı 
+# Seo Dostu URL Yapımı 
 
 **Kısa Bilgi:** Bu uygulamada alan adımızı seo uyumlu olarak tasarlıyoruz.Anahtar kelimeler alan adımızda bulunacaktır. Bu sayede sitemiz sıralama olarak en üstlerde yer alacaktır.
 
